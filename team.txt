@@ -1,2 +1,11 @@
-https://trello.com/b/nrZyS9ta/wdd-330-w2023-block-2-sleep-outside
-Sebastiao J. Matusse
+TRELLO BOARD
+  https://trello.com/b/nrZyS9ta/wdd-330-w2023-block-2-sleep-outside
+
+WEBSITE DOMAIN
+  https://curious-chaja-c0e19c.netlify.app/
+
+GITHUB REPOSITORY
+  https://github.com/MakhehlaMkhize/Group2_WDD330
+
+AUTHORS
+- Sebastiao J. Matusse

@@ -9,3 +9,4 @@ GITHUB REPOSITORY
 
 AUTHORS
 - Sebastiao J. Matusse
+- Raphael Dotse

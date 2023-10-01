@@ -12,7 +12,6 @@ function addProductToCart(product) {
 
   cartContent.push(product);
   setLocalStorage("so-cart", cartContent);
-  console.log(cartContent);
 }
 // add to cart button event handler
 async function addToCartHandler(e) {

@@ -2,8 +2,16 @@ import { getLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  
+  if (cartItems !== null) {
+    if (Array.isArray(cartItems)) {
+      const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+      document.querySelector(".product-list").innerHTML = htmlItems.join("");
+    } else {
+      console.warn("cartItems is not an array:", cartItems);
+      setLocalStorage("so-cart", []);  // Resetting 'so-cart' to an empty array
+    }
+  }
 }
 
 function cartItemTemplate(item) {

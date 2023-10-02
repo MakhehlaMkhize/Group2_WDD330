@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -38,7 +38,10 @@ function cartItemTemplate(item) {
 
 renderCartContents();
 
-document.querySelector(".product.list").addEventListener("click", handleRemoveClick)
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelector(".product-list").addEventListener("click", handleRemoveClick);
+});
+
 function handleRemoveClick(event) {
   if (event.target.closest('.cart-card__remove')) { // Ensure that the clicked element or its parent has the class 'cart-card__remove'
     const itemId = event.target.closest('.cart-card__remove').dataset.id;

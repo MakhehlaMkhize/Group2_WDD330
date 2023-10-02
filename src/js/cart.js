@@ -27,6 +27,9 @@ function cartItemTemplate(item) {
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
   <p class="cart-card__quantity">qty: 1</p>
+  <button class="cart-card__remove" data-id="${item.Id}">
+    <img src="../images/x.svg" alt="Remove item icon" Title="Remove"> 
+  </button>
   <p class="cart-card__price">$${item.FinalPrice}</p>
 </li>`;
 
@@ -34,3 +37,21 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
+
+document.querySelector(".product.list").addEventListener("click", handleRemoveClick)
+function handleRemoveClick(event) {
+  if (event.target.closest('.cart-card__remove')) { // Ensure that the clicked element or its parent has the class 'cart-card__remove'
+    const itemId = event.target.closest('.cart-card__remove').dataset.id;
+    removeItemFromCart(itemId);
+    renderCartContents();
+  }
+}
+ 
+function removeItemFromCart(itemId) {
+  let cartItems = getLocalStorage("so-cart");
+  if (cartItems && Array.isArray(cartItems)) {
+    cartItems = cartItems.filter(item => item.Id !== itemId);
+    setLocalStorage("so-cart", cartItems);
+  }
+}
+

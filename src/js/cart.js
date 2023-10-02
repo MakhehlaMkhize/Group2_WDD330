@@ -27,11 +27,11 @@ function cartItemTemplate(item) {
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
   <p class="cart-card__quantity">qty: 1</p>
-  <button class="cart-card__remove" data-id="${item.Id}">
-    <img src="../images/x.svg" alt="Remove item icon" Title="Remove"> 
-  </button>
   <p class="cart-card__price">$${item.FinalPrice}</p>
-</li>`;
+</li>
+<button class="cart-card__remove" data-id="${item.Id}">
+  <img src="../images/x.svg" alt="Remove item icon" Title="Remove"> 
+</button>`;
 
   return newItem;
 }

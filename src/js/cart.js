@@ -1,5 +1,11 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
+renderCartContents();
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelector(".product-list").addEventListener("click", handleRemoveClick);
+});
+
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   
@@ -13,13 +19,6 @@ function renderCartContents() {
       setLocalStorage("so-cart", []);  // Resetting 'so-cart' to an empty array
     }
   }
-}  
-
-function displayCartTotal() {
-  updateCartTotalVisibility();
-  const cartItems = getLocalStorage("so-cart");
-  const cartTotal = cartItems.reduce((total, item) => total + item.FinalPrice * item.Quantity, 0);
-  document.querySelector(".cart-total").textContent = `$${cartTotal}`;
 }
 
 function cartItemTemplate(item) {
@@ -44,11 +43,12 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
-renderCartContents();
-
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelector(".product-list").addEventListener("click", handleRemoveClick);
-});
+function displayCartTotal() {
+  updateCartTotalVisibility();
+  const cartItems = getLocalStorage("so-cart");
+  const cartTotal = cartItems.reduce((total, item) => total + item.FinalPrice * item.Quantity, 0);
+  document.querySelector(".cart-total").textContent = `$${cartTotal}`;
+}
 
 function handleRemoveClick(event) {
   if (event.target.closest('.cart-card__remove')) { // Ensure that the clicked element or its parent has the class 'cart-card__remove'

@@ -170,7 +170,7 @@ button {
 /* Start cart list card styles */
 .cart-card {
   display: grid;
-  grid-template-columns: 25% auto 15% 5%;
+  grid-template-columns: 25% auto 15% auto;
   font-size: var(--small-font);
   /* max-height: 120px; */
   align-items: center;
@@ -203,11 +203,14 @@ button {
   grid-column: 3;
 }
 .cart-card__remove {
+  grid-row: 1;
+  grid-column: 4;
   width: 30px;
   height: 30px;
   padding: 5px;
   border-radius: 4px;
-  background: var(--mid-grey);
+  background: var(--secondary-color);
+  margin-bottom: 40px;
 }
 
 @media screen and (min-width: 500px) {

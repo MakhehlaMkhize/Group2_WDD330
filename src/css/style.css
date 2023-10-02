@@ -203,6 +203,7 @@ button {
   grid-row: 2;
   grid-column: 3;
 }
+
 .cart-card__remove {
   grid-row: 1;
   grid-column: 4;
@@ -212,6 +213,17 @@ button {
   border-radius: 4px;
   background: var(--secondary-color);
   margin-bottom: 23px;
+}
+
+.cart-footer {
+  padding: 16px;
+  font-size: var(--large-font);
+  max-width: 652px;
+  text-align: right;
+}
+
+.hide {
+  display: none;
 }
 
 @media screen and (min-width: 500px) {

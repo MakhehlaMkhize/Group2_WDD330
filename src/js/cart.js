@@ -1,11 +1,23 @@
-import { getLocalStorage, setLocalStorage, } from "./utils.mjs";
+import {
+  getLocalStorage,
+  setLocalStorage,
+  loadHeaderFooter,
+} from "./utils.mjs";
+
+loadHeaderFooter();
 
 renderCartContents();
 
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelector(".product-list").addEventListener("click", handleRemoveClick);
-  document.querySelector(".product-list").addEventListener("click", handleAddQuantityClick);
-  document.querySelector(".product-list").addEventListener("click", handleSubtractQuantityClick);
+document.addEventListener("DOMContentLoaded", function () {
+  document
+    .querySelector(".product-list")
+    .addEventListener("click", handleRemoveClick);
+  document
+    .querySelector(".product-list")
+    .addEventListener("click", handleAddQuantityClick);
+  document
+    .querySelector(".product-list")
+    .addEventListener("click", handleSubtractQuantityClick);
 });
 
 function cartItemTemplate(item) {
@@ -42,15 +54,15 @@ function cartItemTemplate(item) {
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
-  
+
   if (cartItems !== null) {
     if (Array.isArray(cartItems)) {
       const htmlItems = cartItems.map((item) => cartItemTemplate(item));
       document.querySelector(".product-list").innerHTML = htmlItems.join("");
       displayCartTotal();
     } else {
-      console.warn("cartItems is not an array:", cartItems);
-      setLocalStorage("so-cart", []);  // Resetting 'so-cart' to an empty array
+      // console.warn("cartItems is not an array:", cartItems);
+      setLocalStorage("so-cart", []); // Resetting 'so-cart' to an empty array
     }
   }
 }
@@ -58,29 +70,33 @@ function renderCartContents() {
 function displayCartTotal() {
   updateCartTotalVisibility();
   const cartItems = getLocalStorage("so-cart");
-  const cartTotal = cartItems.reduce((total, item) => total + item.FinalPrice * item.Quantity, 0);
+  const cartTotal = cartItems.reduce(
+    (total, item) => total + item.FinalPrice * item.Quantity,
+    0
+  );
   document.querySelector(".cart-total").textContent = `$${cartTotal}`;
 }
 
 function handleRemoveClick(event) {
-  if (event.target.closest('.cart-card__remove')) {
-    const itemId = event.target.closest('.cart-card__remove').dataset.id;
+  if (event.target.closest(".cart-card__remove")) {
+    const itemId = event.target.closest(".cart-card__remove").dataset.id;
     removeItemFromCart(itemId);
     renderCartContents();
   }
 }
 
 function handleAddQuantityClick(event) {
-  if (event.target.closest('.cart-card__add-quantity')) {
-    const itemId = event.target.closest('.cart-card__add-quantity').dataset.id;
+  if (event.target.closest(".cart-card__add-quantity")) {
+    const itemId = event.target.closest(".cart-card__add-quantity").dataset.id;
     addQuantity(itemId);
     renderCartContents();
   }
 }
 
 function handleSubtractQuantityClick(event) {
-  if (event.target.closest('.cart-card__subtract-quantity')) {
-    const itemId = event.target.closest('.cart-card__subtract-quantity').dataset.id;
+  if (event.target.closest(".cart-card__subtract-quantity")) {
+    const itemId = event.target.closest(".cart-card__subtract-quantity").dataset
+      .id;
     subtractQuantity(itemId);
     renderCartContents();
   }
@@ -89,7 +105,7 @@ function handleSubtractQuantityClick(event) {
 function addQuantity(itemId) {
   let cartItems = getLocalStorage("so-cart");
   if (cartItems && Array.isArray(cartItems)) {
-    const item = cartItems.find(item => item.Id === itemId);
+    const item = cartItems.find((item) => item.Id === itemId);
     if (item) {
       item.Quantity++;
       setLocalStorage("so-cart", cartItems);
@@ -100,7 +116,7 @@ function addQuantity(itemId) {
 function subtractQuantity(itemId) {
   let cartItems = getLocalStorage("so-cart");
   if (cartItems && Array.isArray(cartItems)) {
-    const item = cartItems.find(item => item.Id === itemId);
+    const item = cartItems.find((item) => item.Id === itemId);
     if (item && item.Quantity > 1) {
       item.Quantity--;
       setLocalStorage("so-cart", cartItems);
@@ -109,11 +125,11 @@ function subtractQuantity(itemId) {
     }
   }
 }
- 
+
 function removeItemFromCart(itemId) {
   let cartItems = getLocalStorage("so-cart");
   if (cartItems && Array.isArray(cartItems)) {
-    cartItems = cartItems.filter(item => item.Id !== itemId);
+    cartItems = cartItems.filter((item) => item.Id !== itemId);
     setLocalStorage("so-cart", cartItems);
     updateCartTotalVisibility();
   }

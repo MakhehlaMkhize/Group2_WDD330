@@ -1,0 +1,21 @@
+*
+body {
+    margin: 0;
+    margin-left: 10px;
+}
+
+.product-icons {
+    display: flex;
+    gap: 70px;
+    
+}
+
+#grid_box {
+    margin-bottom: 90px;
+}
+.tent, .sleep_bags, .backpacks, .hammock{
+    width: 60px;
+    height: 72px;
+    list-style: none;
+}
+

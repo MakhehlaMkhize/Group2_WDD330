@@ -242,7 +242,8 @@ button {
   margin-bottom: 5px;
 }
 
-fieldset, #thankcontent {
+fieldset,
+#thankcontent {
   background-color: #f0a868;
 }
 .thanks,
@@ -260,17 +261,20 @@ fieldset, #thankcontent {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-#modal-content, .thanks {
+#modal-content,
+.thanks {
   text-align: center;
 }
 
-#modal-content span, .close-submission {
+#modal-content span,
+.close-submission {
   cursor: pointer;
   position: absolute;
   right: 10px;
 }
 
-#modal-content span:hover, .close-submission:hover {
+#modal-content span:hover,
+.close-submission:hover {
   font-size: 1.3rem;
   color: white;
 }

@@ -134,7 +134,7 @@
       </section>
       <section>
         <button id="join-news-btn">Join Our Newsletter</button>
-          <form method="GET" action="index.html" id="modal">
+          <form method="GET" action="index.html" id="modal" novalidate>
             <div id="content">
               <span class="close">&times;</span>
               <div id="modal-content">
@@ -142,7 +142,7 @@
                   <h1 >Join Our Newsletter</h1>
                   <label>
                     Email:
-                    <input
+                    <input 
                       type="email"
                       name="email"
                       placeholder="example@gmail.com"
@@ -176,5 +176,6 @@
     </main>
     <footer>&copy;NOT a real business</footer>
     <script type="module" src="js/main.js"></script>
+    <script src="js/forms.js"></script>
   </body>
 </html>
